@@ -120,13 +120,13 @@ def identity(a, n, r):
         print("processing multipulation of poly...")
         poly = polynomial_mul(poly, poly)
         print("processing division of poly...")
-        poly = polynomial_division(poly, modulo)['r']
+        poly = polynomial_div(poly, modulo)['r']
         poly = polynomial_scalar_mod(poly, n)
         if (n >> i) & 1:
             print("processing multipulation of lhs...")
             lhs = polynomial_mul(lhs, poly)
             print("processing division of lhs...")
-            lhs = polynomial_division(lhs, modulo)['r']
+            lhs = polynomial_div(lhs, modulo)['r']
             lhs = polynomial_scalar_mod(lhs, n)
         i += 1
 
@@ -194,7 +194,6 @@ def aks_test(n):
                 break
         r += 1
     print('r:',r)
-    print('q:',q)
     if r == n:
         return 'prime'
     for a in range(1, math.floor(2*math.sqrt(r)*math.log2(n))+1):
